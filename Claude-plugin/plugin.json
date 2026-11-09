@@ -14,3 +14,12 @@
     "claude-code"
   ]
 }
+{
+  "name": "idea-jury",
+  "version": "0.1.0",
+  "description": "Eight independent Claude reviewers put a business idea on trial; a transparent rulebook decides the verdict.",
+  "author": { "name": "Sandhya Madhusuthanan" },
+  "license": "MIT",
+  "repository": "https://github.com/SandhyaMadhusuthanan/Idea-Jury",
+  "keywords": ["business-ideas", "validation", "startup", "india"]
+}
