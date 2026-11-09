@@ -52,24 +52,27 @@ Several idea validators already exist (see below). This one differs in substance
 
 ## Install
 
-In Claude Code:
+### Option A: as a plugin (recommended)
 
 ```
-/plugin marketplace add SandhyaMadhusuthanan/idea-jury
+/plugin marketplace add SandhyaMadhusuthanan/Idea-Jury
 /plugin install idea-jury@idea-jury
 ```
 
-Manual (gives you plain `/jury` and `/retest`):
+Commands are namespaced: `/idea-jury:jury`, `/idea-jury:retest`.
+
+### Option B: manual copy
 
 ```
-git clone https://github.com/SandhyaMadhusuthanan/idea-jury.git
+git clone https://github.com/SandhyaMadhusuthanan/Idea-Jury.git
 mkdir -p ~/.claude/skills ~/.claude/agents
-cp -r idea-jury/skills/* ~/.claude/skills/
-cp idea-jury/agents/*.md ~/.claude/agents/
+cp -r Idea-Jury/skills/* ~/.claude/skills/
+cp Idea-Jury/agents/*.md ~/.claude/agents/
 ```
 
-Type `/agents` to confirm the eight jurors loaded. The scorer needs Python 3 and `pip install pyyaml`; without it, Claude applies the rubric by hand and shows the arithmetic.
+Commands have no prefix here: `/jury` and `/retest`. Everything else in this README works the same. Just drop the `idea-jury:` part. Type `/agents` to confirm the eight jurors loaded.
 
+Use one option or the other, not both, or you'll get duplicate jurors.
 ## Commands
 
 | command | use |
