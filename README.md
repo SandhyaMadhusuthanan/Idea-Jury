@@ -151,7 +151,7 @@ WHAT WOULD HAVE TO BE TRUE
 
 BREAK-EVEN   ~14 meals/day at ₹90 (illustrative)
 TAG COUNT    [S] 3   [A] 11   [U] 4  → verdict rests mostly on assumptions
-'''
+```
 
 ## License
 
