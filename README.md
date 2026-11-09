@@ -73,6 +73,16 @@ cp Idea-Jury/agents/*.md ~/.claude/agents/
 Commands have no prefix here: `/jury` and `/retest`. Everything else in this README works the same. Just drop the `idea-jury:` part. Type `/agents` to confirm the eight jurors loaded.
 
 Use one option or the other, not both, or you'll get duplicate jurors.
+
+### Optional: the scoring script
+
+`skills/jury/scripts/score.py` needs Python 3 and one package:
+
+```
+pip install pyyaml
+```
+
+This is optional. Without it, Claude applies `rubric.yaml` by hand and shows the arithmetic, so you get the same verdict rules either way. Install it only if you want the script to do the arithmetic, or to use the no-AI solo mode.
 ## Commands
 
 | command | use |
