@@ -125,6 +125,33 @@ Prompts and rubric were written from scratch, drawing on public frameworks cited
 - [veyralabsgroup/venture-suite](https://github.com/veyralabsgroup/venture-suite): validation with a Bull/Bear/Judge verdict
 - [Ciunkos/skills](https://github.com/Ciunkos/skills): includes a business-idea-validator skill
 
+## Sample output
+
+An excerpt from `/idea-jury:jury a home-style tiffin service for office workers in Coimbatore`. The numbers are illustrative placeholders, not market data.
+
+```
+VERDICT: TEST FIRST
+Decided by: willingness_to_pay capped at 2 (no buyer has paid yet) → total below GO threshold
+
+BUDGET TO FIRST REAL SIGNAL
+  Time:   ~10 hrs/week for 3 weeks
+  Money:  ₹3,000 (sample meals + printed menu)
+  If you stop now, you lose: ₹0 and a few weekends
+
+KILL CRITERIA (written before you start)
+  Fewer than 5 of 30 office workers pre-pay for a week's plan within 3 weeks → STOP
+
+CHEAPEST TEST
+  Cook 10 sample lunches, offer them to 30 people at one office park, ask for ₹500 advance.
+
+WHAT WOULD HAVE TO BE TRUE
+  1. [A] Office workers near you want home-style food at ₹80–100 per meal
+  2. [A] You can deliver 20 meals/day without a rented kitchen
+  3. [U] Whether society or licence rules allow home-based food sales
+
+BREAK-EVEN   ~14 meals/day at ₹90 (illustrative)
+TAG COUNT    [S] 3   [A] 11   [U] 4  → verdict rests mostly on assumptions
+
 ## License
 
 MIT.
