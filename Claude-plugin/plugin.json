@@ -1,21 +1,5 @@
 {
   "name": "idea-jury",
-  "version": "1.1.0",
-  "description": "Put a business idea on trial before eight independent Claude reviewers. India and small-business mode, editable rubric, kill criteria and a budget to the first real signal.",
-  "license": "MIT",
-  "keywords": [
-    "business",
-    "startup",
-    "small-business",
-    "india",
-    "validation",
-    "jury",
-    "subagents",
-    "claude-code"
-  ]
-}
-{
-  "name": "idea-jury",
   "version": "0.1.0",
   "description": "Eight independent Claude reviewers put a business idea on trial; a transparent rulebook decides the verdict.",
   "author": { "name": "Sandhya Madhusuthanan" },
