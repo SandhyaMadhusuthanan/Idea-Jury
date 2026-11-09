@@ -1,13 +1,12 @@
 {
   "name": "idea-jury",
-  "owner": {
-    "name": "SandhyaMadhusuthanan"
-  },
+  "owner": { "name": "Sandhya Madhusuthanan" },
   "plugins": [
     {
       "name": "idea-jury",
       "source": "./",
-      "description": "A jury of eight Claude reviewers decides whether your business idea is worth your time and money."
+      "description": "Is this business idea worth your time and money? Eight reviewers, one transparent rulebook.",
+      "version": "0.1.0"
     }
   ]
 }
