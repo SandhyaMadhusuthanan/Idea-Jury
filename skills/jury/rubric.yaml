@@ -1,0 +1,86 @@
+# rubric.yaml - everything that decides a verdict lives in this file.
+# Edit the numbers to fit your situation. No hidden weights anywhere else.
+# The judge applies this file with scripts/score.py, so the arithmetic is
+# shown in every report. Change a value here and the next verdict changes.
+
+version: 1
+
+# ---------------------------------------------------------------------------
+# SOLO SCORECARD (no AI needed): rate each dimension 0-5, then run
+#   python3 scripts/score.py --solo ratings.json
+# ---------------------------------------------------------------------------
+rating_max: 5
+
+dimensions:
+  pain:               {weight: 3, ask: "Do buyers already spend time or money working around this, and complain unprompted?"}
+  willingness_to_pay: {weight: 3, ask: "Has anyone paid, pre-paid or put down a deposit at a named price?"}
+  reachability:       {weight: 2, ask: "Can you name where the first 10 buyers are and contact them this week?"}
+  founder_fit:        {weight: 2, ask: "Do you have a real edge, and will you tolerate this work for two years?"}
+  time_to_first_sale: {weight: 2, ask: "Can a paid version exist in under 30 days?"}
+  market_ceiling:     {weight: 1, ask: "Does the reachable market cover your goal at a realistic price?"}
+  competition:        {weight: 1, ask: "Are the alternatives (including doing nothing) weak, or is there a clear wedge?"}
+  economics:          {weight: 1, ask: "Do margin and acquisition cost plausibly work at small scale?"}
+
+# Rating anchors: 0 contradicted | 1 opinion only | 2 thin signal |
+# 3 indirect evidence | 4 strong direct evidence | 5 money has changed hands
+
+# If there is NO direct buyer evidence, these dimensions are capped.
+# Friends, family and social-media likes are not buyers.
+evidence_caps:
+  pain: 3
+  willingness_to_pay: 2
+
+buyer_evidence:
+  min_interviews: 5        # real buyer conversations ...
+  or_anyone_has_paid: true # ... or at least one payment/pre-payment
+
+solo_verdict:
+  go_min: 75               # score out of 100; GO also needs buyer evidence
+  kill_below: 50           # below this score the verdict is KILL
+
+# Flags you can raise in solo mode (ratings.json -> "flags")
+flags_cap_at_test_first:
+  - buyer_is_not_user_and_unreachable
+  - needs_network_effect_before_value
+  - only_differentiator_is_cheaper_or_ai
+  - needs_licence_you_do_not_have
+flags_force_kill:
+  - no_identifiable_buyer
+  - negative_unit_economics_at_any_price
+  - goal_needs_more_customers_than_you_can_reach
+
+# ---------------------------------------------------------------------------
+# JURY VERDICT (applied to the eight jurors' votes, in this order)
+# ---------------------------------------------------------------------------
+jury:
+  # 1. deal-breakers
+  deal_breaker_kill_min_jurors: 2   # independent jurors, upheld => KILL
+  # (one upheld deal-breaker caps the verdict at TEST FIRST)
+
+  # 2. KILL
+  kill_pass_share: 0.60             # share of jurors voting PASS
+  kill_mean_below: 4.0              # confidence-weighted mean score
+
+  # 3. GO
+  go_back_share: 0.75
+  go_mean_min: 7.5
+  go_required_backers: [customer, cfo]
+  go_requires_buyer_evidence: true
+
+  # 4. PARK: market is real, but fit/timing is wrong for THIS founder
+  park_supporters: [customer, market-analyst]   # must be BACK or TEST
+  park_blockers: [builder, cfo, risk-officer]   # any one voting PASS
+
+  # Round 2 rebuttal (Advocate vs Prosecutor)
+  round2_full:  {min_back: 3, min_pass: 3, score_range: 6}
+  round2_quick: {min_back: 1, min_pass: 1, score_range: 5}
+  quick_jury_max_size: 5
+
+# ---------------------------------------------------------------------------
+# CLAIM TAGS (every claim in a report carries one)
+# ---------------------------------------------------------------------------
+claim_tags:
+  S: "sourced - backed by a named, checkable source or by the founder's own data"
+  A: "assumed - a reasoned guess, shown with a range"
+  U: "unknown - cannot be known without a test"
+warn_if_assumed_exceeds_sourced: true
